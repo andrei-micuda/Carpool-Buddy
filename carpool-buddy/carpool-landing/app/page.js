@@ -29,7 +29,7 @@ export default function Home() {
   };
 
   return (
-    <main className="flex items-center justify-center h-screen overflow-hidden text-text relative">
+    <main className="flex flex-col items-center justify-center overflow-scroll text-text relative">
       <Image
         src="/beams-home.jpg"
         alt="background"
@@ -42,7 +42,7 @@ export default function Home() {
           <Title level={5}>
             Navigați prin jungla urbană fără stres! Platforma noastră revoluționară 
             de carpooling construită pentru București transformă fiecare cursă
-            Din traficul haotic într-o experiență calmă și ecoloică. Alăturați-vă
+            din traficul haotic într-o experiență calmă și ecologică. Alăturați-vă
             inițiativei, reduceți timpul de deplasare și bucurați-vă de un viitor
             mai ecologic cu Carpool Bucharest – deoarece împreună putem face o schimbare!
           </Title>
@@ -77,7 +77,14 @@ export default function Home() {
           )}
         </div>
         <div className="w-1/2 relative aspect-square">
-          <Image src="/phone.png" fill alt="phone" />
+          <Image src="/render_square.png" fill alt="phone" />
+        </div>
+      </div>
+      <div className="flex items-center justify-center h-screen w-8/12">
+        <div className="w-1/3">
+          <Image src="/prototype3.gif"  alt="phone" width={393} height={852} />
+        </div>
+        <div className="w-2/3">
         </div>
       </div>
     </main>

@@ -11,7 +11,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
       <html lang="en">
-          <head>
+          {/* <head>
               <!-- Hotjar Tracking Code for https://carpool-buddy-86e69.web.app/ -->
               <script>
                   (function(h,o,t,j,a,r){
@@ -31,7 +31,7 @@ export default function RootLayout({ children }) {
               gtag('js', new Date());
 
               gtag('config', 'G-ZNSJ8P4DY4');
-          </script>
+          </script> */}
       <body className={inter.className}>{children}</body>
     </html>
   )
