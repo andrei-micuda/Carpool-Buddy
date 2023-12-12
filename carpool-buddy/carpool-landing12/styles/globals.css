@@ -1,3 +1,54 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html{
+    scroll-behavior: smooth;
+}
+
+.ant-steps-item-title{
+    color:rgba(0, 0, 0, 0.88)  !important;
+}
+
+.scroll-button1{
+    width: 1.5em; 
+    height: 1.5em; 
+    background-color: transparent; 
+    z-index: 80; 
+    bottom: 25px; 
+    position: absolute; 
+    border-width: 0 0.25em 0.25em 0; 
+    border-style: solid; 
+    border-color: rgba(0, 0, 0, 0.88) ; 
+    animation: scrolldown 1.2s ease-in-out infinite 0.15s;
+    cursor: pointer;
+}
+
+.scroll-button2{
+    width: 1.5em; 
+    height: 1.5em; 
+    background-color: transparent; 
+    z-index: 80; 
+    bottom: 40px; 
+    position: absolute; 
+    border-width: 0 0.25em 0.25em 0;
+    border-style: solid; 
+    border-color: rgba(0, 0, 0, 0.88) ; 
+    animation: scrolldown 1.2s ease-in-out infinite;
+    cursor: pointer;
+}
+
+@keyframes scrolldown {
+    0%{
+        transform: translateY(20%) rotate(45deg);
+        opacity: 0.7;
+    }
+    50%{
+        transform: translateY(0%) rotate(45deg);
+        opacity: 0.2;
+    }
+    100%{
+        transform: translateY(20%) rotate(45deg);
+        opacity: 0.7;
+    }
+}
