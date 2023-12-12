@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { uploadEmail } from "./firebase-setup";
+import { uploadEmail } from "./api/firebase-setup";
 // import image from "./beams-home.jpg";
 // import phone from "./phone.png";
 import Image from "next/image";
@@ -86,13 +86,13 @@ export default function Home() {
         </div>
       </main>
 
-      <main className="flex flex-col items-center justify-center h-screen text-text relative">
+      {/* <main className="flex flex-col items-center justify-center h-screen text-text relative">
         <div className="flex items-center justify-center h-screen w-8/12">
           <div className="w-1/3 h-4/6 bg-neutral-950 p-2 relative">
             <Image src="/prototype3.gif" alt="phone" fill={true} />
           </div>
         </div>
-      </main>
+      </main> */}
     </>
   );
 }
