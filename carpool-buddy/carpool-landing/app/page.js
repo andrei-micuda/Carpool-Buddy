@@ -40,21 +40,20 @@ export default function Home() {
         <div className="w-1/2">
           <Title>Carpool Buddy</Title>
           <Title level={5}>
-            Navigate the urban jungle stress-free! Introducing our revolutionary
-            carpooling platform designed for Bucharest, where every shared ride
-            transforms traffic chaos into a smooth, eco-friendly journey. Join
-            the movement, cut down on commute times, and embrace a greener
-            tomorrow with our Carpool Bucharest – because together, we drive
-            change!
+            Navigați prin jungla urbană fără stres! Platforma noastră revoluționară 
+            de carpooling construită pentru București transformă fiecare cursă
+            Din traficul haotic într-o experiență calmă și ecoloică. Alăturați-vă
+            inițiativei, reduceți timpul de deplasare și bucurați-vă de un viitor
+            mai ecologic cu Carpool Bucharest – deoarece împreună putem face o schimbare!
           </Title>
-          <Title level={5}>Ready in ...</Title>
+          <Title level={5}>Lansare la ...</Title>
           <Countdown targetDate="2024-01-01T00:00:00" />
           <div className="p-4"></div>
           {!sent ? (
             <Form onFinish={onFinish}>
               <Space.Compact style={{ width: "100%" }}>
                 <Input
-                  placeholder="Your email"
+                  placeholder="Introduceți adresa de Email"
                   type="email"
                   value={email}
                   onChange={(e) => {
@@ -73,7 +72,7 @@ export default function Home() {
             </Form>
           ) : (
             <Typography>
-              Thank you for your support. You will be notified once we launch.
+              Mulțumim pentru sprijin. Vă vom contacta imediat ce aplicația este lansată.
             </Typography>
           )}
         </div>
