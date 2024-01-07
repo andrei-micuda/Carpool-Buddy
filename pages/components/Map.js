@@ -1,12 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import tw from "tailwind-styled-components";
 import mapboxgl from "!mapbox-gl";
+import { coordsToPlace } from "../../data/geocoding";
 
-mapboxgl.accessToken = "NULL";
+mapboxgl.accessToken = "pk.eyJ1IjoibWljdTAxIiwiYSI6ImNscjN4emk5bTAyODYycmw3eGl1ODJ6ZXUifQ.53Ou-aCAC_Kfp2yo9bjUOg";
 
 const Map = (props) => {
-  console.log("Initializing map...");
-
   const map = useRef(null);
 
   const [coordinates, setCoordinates] = useState([-74.5 + (Math.random() - 0.5) * 10, // Example data
@@ -61,7 +60,11 @@ const Map = (props) => {
     }
   }, []);
 
-  useEffect(() => centerMap(map.current, coordinates), [coordinates]);
+  useEffect(async () => {
+    centerMap(map.current, coordinates), [coordinates];
+    const place = await coordsToPlace(coordinates);
+    console.log(place);
+  });
 
   const centerMap = (map, coordinates) => {
     map.on('load', function () {
