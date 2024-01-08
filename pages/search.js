@@ -1,18 +1,28 @@
 import React, { useState, useEffect, useContext } from "react";
 import tw from "tailwind-styled-components";
 import Link from "next/link";
-import { coordsToPlace } from "../data/geocoding";
+import { coordsToPlace, textToPlaces } from "../data/geocoding";
 import AppContext from "../data/appContext";
 
 const Search = () => {
   const [pickuplocation, setPickuplocation] = useState("");
   const [dropofflocation, setDropofflocation] = useState("");
   const {coordinates, setCoordinates} = useContext(AppContext);
+  const [dropofflist, setDropofflist] = useState([]);
 
   //setPickuplocation(coordsToPlace(coordinates));
   useEffect(() => {
     coordsToPlace(coordinates).then((place) => setPickuplocation(place));
   }, []);
+
+  useEffect(async () => {
+    if(coordinates)
+    {
+      console.log(coordinates);
+      const places = await textToPlaces(dropofflocation, coordinates);
+      setDropofflist(places);
+    }
+  }, [dropofflocation])
 
   return (
     <Wrapper>
@@ -40,10 +50,17 @@ const Search = () => {
         </InputBoxes>
         <PlusIcon src="https://img.icons8.com/ios/50/000000/plus-math.png" />
       </InputContainer>
-      <SavedPlaces className="text-red-600">
-        <StarIcon src="https://img.icons8.com/ios-filled/50/ffffff/star--v1.png" />
-        Saved Places (Not available)
-      </SavedPlaces>
+      <ul>
+        <li>
+          <SavedPlaces className="text-red-600">
+            <StarIcon src="https://img.icons8.com/ios-filled/50/ffffff/star--v1.png" />
+            Saved Places (Not available)
+          </SavedPlaces>
+        </li>
+        {dropofflist.map(loc => {
+          return <div>{loc}</div>
+        })}
+      </ul>
       <Link
         href={{
           pathname: "/confirm",
@@ -110,7 +127,7 @@ rounded-full bg-gray-400 p-2 mr-2 h-10 w-10
 `;
 
 const SavedPlaces = tw.div`
-bg-white flex text-l  items-center px-4 py-2
+bg-white flex text-l items-center px-4 py-2
 `;
 
 const ConfirmButtonContainer = tw.div`

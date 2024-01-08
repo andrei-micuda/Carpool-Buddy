@@ -1,15 +1,16 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useContext } from "react";
 import tw from "tailwind-styled-components";
 import mapboxgl from "!mapbox-gl";
 import { coordsToPlace } from "../../data/geocoding";
+import AppContext from "../../data/appContext";
 
 mapboxgl.accessToken = "pk.eyJ1IjoibWljdTAxIiwiYSI6ImNscjN4emk5bTAyODYycmw3eGl1ODJ6ZXUifQ.53Ou-aCAC_Kfp2yo9bjUOg";
 
 const Map = (props) => {
   const map = useRef(null);
 
-  const [coordinates, setCoordinates] = useState([-74.5 + (Math.random() - 0.5) * 10, // Example data
-  40 + (Math.random() - 0.5) * 10])
+  const {coordinates, setCoordinates} = useContext(AppContext);
+  // const {coordinates, setCoordinates} = userCoordinates;
 
   useEffect(() => {
     const pickupCoord = props.pickupCoordinate;

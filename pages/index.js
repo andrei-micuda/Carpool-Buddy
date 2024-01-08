@@ -5,30 +5,28 @@ import Link from "next/link";
 export default function Home() {
   return (
     <Wrapper>
+      <Header>
+        Carpool Buddy
+      </Header>
+      <div id="whereToBtn" className="px-4 mb-2">
+        <Link href="/search" passHref>
+          <InputButton>Where to ?</InputButton>
+        </Link>
+      </div>
       <Map />
       <ActionItems>
-        <Header>
-          <UberLogo src="https://i.ibb.co/84stgjq/uber-technologies-new-20218114.jpg" />
-        </Header>
         <ActionButtons>
           <Link href="/search" passHref>
             <ActionButton>
               <ActionButtonImage src="https://i.ibb.co/cyvcpfF/uberx.png" />
-              Ride
+              Carpool
             </ActionButton>
           </Link>
-          <ActionButton className="text-red-600">
-            <ActionButtonImage src="https://i.ibb.co/n776JLm/bike.png" />
-            Wheels (Not Available)
-          </ActionButton>
           <ActionButton className="text-red-600">
             <ActionButtonImage src="https://i.ibb.co/5RjchBg/uberschedule.png" />
             Reserve (Not Available)
           </ActionButton>
         </ActionButtons>
-        <Link href="/search" passHref>
-          <InputButton>Where to ?</InputButton>
-        </Link>
       </ActionItems>
     </Wrapper>
   );
