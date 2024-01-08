@@ -1,10 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import tw from "tailwind-styled-components";
 import Link from "next/link";
+import { coordsToPlace } from "../data/geocoding";
+import AppContext from "../data/appContext";
 
 const Search = () => {
   const [pickuplocation, setPickuplocation] = useState("");
   const [dropofflocation, setDropofflocation] = useState("");
+  const {coordinates, setCoordinates} = useContext(AppContext);
+
+  //setPickuplocation(coordsToPlace(coordinates));
+  useEffect(() => {
+    coordsToPlace(coordinates).then((place) => setPickuplocation(place));
+  }, []);
 
   return (
     <Wrapper>
@@ -23,6 +31,7 @@ const Search = () => {
           <Input
             placeholder="Enter pickup location"
             onChange={(event) => setPickuplocation(event.target.value)}
+            defaultValue={pickuplocation}
           />
           <Input
             placeholder="Where to?"
