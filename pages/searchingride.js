@@ -4,15 +4,22 @@ import Map from "./components/Map";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import RideSelector from "./components/RideSelector";
-import { Button } from "@mui/material";
+import { Button, Dialog, DialogTitle } from "@mui/material";
+import CircularProgress from "@mui/material/CircularProgress";
 
-const Confirm = () => {
+const SearchingRide = () => {
   const router = useRouter();
   const { pickuplocation, dropofflocation } = router.query;
   const [pickupCoordinate, setPickupCoordinate] = useState();
   const [dropoffCoordinate, setDropoffCoordinate] = useState();
   const [selectedService, setSelectedService] = useState();
-  const [searching, setSearching] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setOpen(true);
+    }, 20000);
+  }, []);
 
   const getPickupCoordinate = (pickuplocation) => {
     fetch(
@@ -53,6 +60,18 @@ const Confirm = () => {
 
   return (
     <Wrapper>
+      <Dialog open={open}>
+        <DialogTitle style={{ textAlign: "center" }}>
+          We are sorry, there are no drivers available now. Try again later.
+        </DialogTitle>
+        <div style={{ padding: "0 2rem 2rem 2rem" }}>
+          <Link href="/">
+            <Button variant="outlined" fullWidth>
+              Main page
+            </Button>
+          </Link>
+        </div>
+      </Dialog>
       <ButtonContainer>
         <Link href="/search" passHref>
           <BackButton src="https://img.icons8.com/ios-filled/50/000000/left.png" />
@@ -61,48 +80,26 @@ const Confirm = () => {
 
       {pickupCoordinate && dropoffCoordinate && (
         <Map
+          style={{ filter: "brightness(0.5)" }}
           fullscreen={true}
           pickupCoordinate={pickupCoordinate}
           dropoffCoordinate={dropoffCoordinate}
         />
       )}
-      <RideContainer>
-        <RideSelector
-          setSelectedService={setSelectedService}
-          pickupCoordinate={pickupCoordinate}
-          dropoffCoordinate={dropoffCoordinate}
-        />
-
-        <Link
-          href={{
-            pathname: "/searchingride",
-            query: {
-              service: selectedService,
-              pickuplocation: pickuplocation,
-              dropofflocation: dropofflocation,
-            },
-          }}
-          passHref
-        >
-          <Button
-            variant="outlined"
-            className="flex text-xl  items-center py-4 mt-4 justify-center text-center m-4 transform transition cursor-pointer"
-            disabled={selectedService ? false : true}
-          >
-            Confirm
-          </Button>
-        </Link>
-      </RideContainer>
+      {!open ? (
+        <div className="p-4 absolute bottom-0 w-full rounded-t-lg bg-white flex items-center">
+          <CircularProgress style={{ marginRight: "2rem" }} />
+          We are searching for your ride. Please wait...{" "}
+        </div>
+      ) : (
+        ""
+      )}
     </Wrapper>
   );
 };
 
 const Wrapper = tw.div`
  flex flex-col h-screen 
-`;
-
-const RideContainer = tw.div`
-flex-1  h-1/2 flex flex-col
 `;
 
 const ButtonContainer = tw.div`
@@ -113,4 +110,4 @@ const BackButton = tw.img`
 h-full object-contain   
 `;
 
-export default Confirm;
+export default SearchingRide;

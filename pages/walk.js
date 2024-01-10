@@ -4,15 +4,15 @@ import Map from "./components/Map";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import RideSelector from "./components/RideSelector";
-import { Button } from "@mui/material";
+import { Button, Slider } from "@mui/material";
 
-const Confirm = () => {
+const Walk = () => {
   const router = useRouter();
+  const [minutes, setMinutes] = useState(0);
   const { pickuplocation, dropofflocation } = router.query;
   const [pickupCoordinate, setPickupCoordinate] = useState();
   const [dropoffCoordinate, setDropoffCoordinate] = useState();
   const [selectedService, setSelectedService] = useState();
-  const [searching, setSearching] = useState(false);
 
   const getPickupCoordinate = (pickuplocation) => {
     fetch(
@@ -50,6 +50,28 @@ const Confirm = () => {
       getDropoffCoordinate(dropofflocation);
     }
   }, [pickuplocation, dropofflocation]);
+  const marks = [
+    {
+      value: 0,
+      label: "0 min",
+    },
+    {
+      value: 10,
+      label: "10 min",
+    },
+    {
+      value: 20,
+      label: "20 min",
+    },
+    {
+      value: 30,
+      label: "30 min",
+    },
+  ];
+
+  function valuetext(value) {
+    return `${value} min`;
+  }
 
   return (
     <Wrapper>
@@ -61,41 +83,53 @@ const Confirm = () => {
 
       {pickupCoordinate && dropoffCoordinate && (
         <Map
+          radius={minutes / 10}
           fullscreen={true}
           pickupCoordinate={pickupCoordinate}
           dropoffCoordinate={dropoffCoordinate}
         />
       )}
-      <RideContainer>
-        <RideSelector
-          setSelectedService={setSelectedService}
-          pickupCoordinate={pickupCoordinate}
-          dropoffCoordinate={dropoffCoordinate}
-        />
-
+      <SliderContainer>
+        <Title>
+          Select how much you are willing to walk on foot to your destination
+          point.
+        </Title>
+        <Slider
+          aria-label="Custom marks"
+          defaultValue={0}
+          onChange={(e, newValue) => {
+            setMinutes(newValue);
+          }}
+          getAriaValueText={valuetext}
+          step={5}
+          max={30}
+          valueLabelDisplay="auto"
+          marks={marks}
+        />{" "}
         <Link
           href={{
-            pathname: "/searchingride",
+            pathname: pickuplocation && dropofflocation ? "/confirm" : "",
             query: {
-              service: selectedService,
               pickuplocation: pickuplocation,
               dropofflocation: dropofflocation,
             },
           }}
           passHref
         >
-          <Button
-            variant="outlined"
-            className="flex text-xl  items-center py-4 mt-4 justify-center text-center m-4 transform transition cursor-pointer"
-            disabled={selectedService ? false : true}
-          >
-            Confirm
-          </Button>
+          <div className="p-8">
+            <Button variant="outlined" fullWidth>
+              Confirm
+            </Button>
+          </div>
         </Link>
-      </RideContainer>
+      </SliderContainer>
     </Wrapper>
   );
 };
+
+const SliderContainer = tw.div`
+flex-1  h-1/2 flex flex-col p-8
+`;
 
 const Wrapper = tw.div`
  flex flex-col h-screen 
@@ -103,6 +137,10 @@ const Wrapper = tw.div`
 
 const RideContainer = tw.div`
 flex-1  h-1/2 flex flex-col
+`;
+
+const Title = tw.div`
+text-center text-s text-gray-500 border-b py-2
 `;
 
 const ButtonContainer = tw.div`
@@ -113,4 +151,4 @@ const BackButton = tw.img`
 h-full object-contain   
 `;
 
-export default Confirm;
+export default Walk;
