@@ -1,14 +1,16 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import tw from "tailwind-styled-components";
 import Map from "./components/Map";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import RideSelector from "./components/RideSelector";
 import { Button, Slider } from "@mui/material";
+import AppContext from "../data/appContext";
 
 const Walk = () => {
   const router = useRouter();
-  const [minutes, setMinutes] = useState(0);
+  // const [minutes, setMinutes] = useState(0);
+  const { minutes, setMinutes } = useContext(AppContext);
   const { pickuplocation, dropofflocation } = router.query;
   const [pickupCoordinate, setPickupCoordinate] = useState();
   const [dropoffCoordinate, setDropoffCoordinate] = useState();

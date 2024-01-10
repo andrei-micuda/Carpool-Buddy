@@ -9,6 +9,7 @@ import AppContext from "../data/appContext";
 
 function MyApp({ Component, pageProps }) {
   const [coordinates, setCoordinates] = useState();
+  const [minutes, setMinutes] = useState(0);
 
   const router = useRouter()
   useEffect(() => {
@@ -25,7 +26,7 @@ function MyApp({ Component, pageProps }) {
     hotjar.initialize(3819666, 6)
   }, [])
   return (
-    <AppContext.Provider value={{ coordinates, setCoordinates }}>
+    <AppContext.Provider value={{ coordinates, setCoordinates, minutes, setMinutes }}>
       <Component {...pageProps} />
     </AppContext.Provider>
   );

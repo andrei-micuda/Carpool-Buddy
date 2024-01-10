@@ -53,7 +53,7 @@ const RideSelector = (props) => {
               <Time>5 min away</Time>
             </CarDetails>
             <CarPrice>
-              {"$" + (rideDuration * car.multiplier).toFixed(2)}
+              {"RON " + (rideDuration * car.multiplier - rideDuration * props.minutes * 0.01).toFixed(2)}
             </CarPrice>
           </div>
         ))}

@@ -6,16 +6,21 @@ import { useRouter } from "next/router";
 import RideSelector from "./components/RideSelector";
 import { Button, Dialog, DialogTitle } from "@mui/material";
 import CircularProgress from "@mui/material/CircularProgress";
+import { hotjar } from 'react-hotjar'
+import {event} from '../lib/gtag';
 
 const SearchingRide = () => {
   const router = useRouter();
-  const { pickuplocation, dropofflocation } = router.query;
+  const { pickuplocation, dropofflocation, service, minutes } = router.query;
   const [pickupCoordinate, setPickupCoordinate] = useState();
   const [dropoffCoordinate, setDropoffCoordinate] = useState();
   const [selectedService, setSelectedService] = useState();
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
+    hotjar.identify(null, { pickuplocation, dropofflocation, service, minutes });
+    hotjar.event("confirm_ride");
+    event("confirm_ride", null, null, { pickuplocation, dropofflocation, service, minutes });
     setTimeout(() => {
       setOpen(true);
     }, 20000);

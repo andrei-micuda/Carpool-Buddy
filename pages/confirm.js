@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import tw from "tailwind-styled-components";
 import Map from "./components/Map";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import RideSelector from "./components/RideSelector";
 import { Button } from "@mui/material";
+import AppContext from "../data/appContext";
 
 const Confirm = () => {
   const router = useRouter();
@@ -13,6 +14,7 @@ const Confirm = () => {
   const [dropoffCoordinate, setDropoffCoordinate] = useState();
   const [selectedService, setSelectedService] = useState();
   const [searching, setSearching] = useState(false);
+  const { minutes } = useContext(AppContext);
 
   const getPickupCoordinate = (pickuplocation) => {
     fetch(
@@ -68,6 +70,7 @@ const Confirm = () => {
       )}
       <RideContainer>
         <RideSelector
+          minutes={minutes}
           setSelectedService={setSelectedService}
           pickupCoordinate={pickupCoordinate}
           dropoffCoordinate={dropoffCoordinate}
@@ -80,6 +83,7 @@ const Confirm = () => {
               service: selectedService,
               pickuplocation: pickuplocation,
               dropofflocation: dropofflocation,
+              minutes: minutes
             },
           }}
           passHref

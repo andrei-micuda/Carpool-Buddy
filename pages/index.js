@@ -26,7 +26,7 @@ export default function Home() {
               className="flex flex-col"
               style={{ width: "45%" }}
             >
-              <ActionButtonImage src="https://i.ibb.co/cyvcpfF/uberx.png" />
+              <ActionButtonImage src="../carpool_car.png" />
               Carpool
             </Button>
           </Link>{" "}
