@@ -70,7 +70,7 @@ export default function Home() {
               deoarece împreună putem face o schimbare!
             </Title>
             <Title level={5}>Lansare la ...</Title>
-            <Countdown targetDate="2024-01-01T00:00:00" />
+            <Countdown targetDate="2024-02-01T00:00:00" />
             <div className="p-4"></div>
             {!sent ? (
               <Form onFinish={onFinish}>
