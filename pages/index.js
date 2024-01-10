@@ -8,7 +8,7 @@ export default function Home() {
     <Wrapper>
       <Header>
         <UberLogo src="../logo.jpg"></UberLogo>
-        <Typography variant="h6">Carpool buddy</Typography>
+        <Typography variant="h6">Carpool Buddy</Typography>
       </Header>
       <div id="whereToBtn" className="px-4 mb-2">
         <Link href="/search" passHref>
@@ -54,7 +54,7 @@ const ActionItems = tw.div`
 `;
 
 const Header = tw.div`
- flex items-center
+ flex items-center justify-center
 `;
 
 const UberLogo = tw.img`

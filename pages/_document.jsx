@@ -11,20 +11,21 @@ class MyDocument extends Document {
         return (
             <Html>
                 <Head>
-                    {/* <script
+                    <script
                 async
-                src='https://www.googletagmanager.com/gtag/js?id=G-Q0JJ7NJ3BZ'
+                src='https://www.googletagmanager.com/gtag/js?id=G-4XTPH9YECE'
                 ></script>
                 <script
                 dangerouslySetInnerHTML={{
                     __html: `
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', 'G-Q0JJ7NJ3BZ');`
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
+
+                    gtag('config', 'G-4XTPH9YECE');`
                 }}
-                ></script> */}
-                    {/* <script src='https://unpkg.com/@turf/turf@6/turf.min.js'></script> */}
+                ></script>
+                    
                 </Head>
                 <body>
                     <Main />
