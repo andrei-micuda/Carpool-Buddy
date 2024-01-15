@@ -10,6 +10,11 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<style>
+			#toc ol, #toc ul{
+				list-style: none;
+			}
+		</style>
 	</head>
 	<body class="no-sidebar is-preload">
 		<div id="page-wrapper">
@@ -56,6 +61,7 @@
 				<section id="main">
 					<div class="container">
 						<div id="content">
+							<div id="toc"><h2>Table of Contents</h2></div>
 							<!-- Post -->
 								<article class="box post">
 									<header>
@@ -254,12 +260,21 @@
 									<h3>Percentage of each fare cost</h3>
 									<p>We will receive a cut for each ride completed. Electric cars will benefit from a smaller fee in order to encourage eco driving.</p>
 									<h3>Corporate Partnerships</h3>
-									<p>Partner with local businesses or corporations to provide carpooling solutions for their employees. Charge a fee for corporate accounts or offer group packages.</p>
+									<p>Partner with local businesses or corporations to provide carpooling solutions for their employees. Charge a fee for corporate accounts or offer group packages. 
+									</p>
+									<p>This represents a viable option for our product, given the substantial number of people in Bucharest who commute to diverse locations for work or study, residing on the opposite side of the city. With flexible schedules, it's likely that people may not consistently carpool with the same person. This is an idea worth expanding in the near future. </p>
+									<h3>Points system</h3>
+									<p>
+									Following the feedback received during our presentation on January 10, we've taken into consideration the legal requirements associated with revenue streams and their implementation. This imposes certain constraints on our initial idea, which we had not thoroughly examined in this early application stages. Now that we are aware of these legal considerations, we are exploring an alternative option to cater to individuals who may not wish to establish a PFA or obtain a taxi certification. We are considering a points system.
+									
+									With this proposed system, people contributing as drivers would accumulate in-app points that can be used when they choose to be passengers in the future. We are thinking the potential evolution of this system into a cryptocurrency solution, creating our own digital currency for both in-app and external use. Aligning with our marketing approach and strategy (eco-friendliness), we could form partnerships with businesses sharing similar principles. These collaborations would enable users to make purchases using our cryptocurrency, fostering a community that values sustainable practices.
+									</p>
+								
 								</article>
 
 								<article>
 									<h2>Validation 1</h2>
-									<h3>How we identified the problem?</h3>
+									<h3>How did we identify the problem?</h3>
 									<p>As university students and full-time employees, all team members in Bucharest deal with traffic issues to some extent. For instance, Andrei spends a minimum of 2 hours commuting between university and home via the metro.</p>
 									<h3>What we thought was the solution?</h3>
 									<p>We identified car pooling as a possible solution to this issue. The benefits of this solution are twofold:</p>
@@ -404,10 +419,13 @@
 							</article>
 							<article>
 								<h2>Analytics</h2>
-								<img src="./images/sesions.png">
+								<div class="row">
+									<img src="./images/hotjar-landing.png">
+								</div>
 								<div style="display: flex; justify-content: space-between; margin-top:10px">
-								<img src="./images/heatmap1.png">
-								<img src="./images/heatmap2.jpg"></div>
+									<img src="./images/heatmap1.png">
+									<img src="./images/heatmap2.jpg">
+								</div>
 							</article>
 
 							<article>	
@@ -568,7 +586,47 @@
 									</div>
 								</div>
 							</article>
+							<article>
+								<h2>Lead Generation</h2>
+								<p>We used the landing page to collect emails from people.</p>
+								<img src="./images/firebase.png"/>
 
+								<p>We posted on a few platforms to get people to see our landing page.</p>
+								<div>
+								<ul>
+									<li style="margin: 2rem 0;">Whatsapp: We sent messages on students groups. </li>
+									<div class="row">
+										<div class="col-6">
+											<img style="width: 100%;" src="./images/dovezi5.jpg"/>
+										</div>
+										<div class="col-3"></div>
+										<div class="col-3"></div>
+									</div>
+									<li style="margin: 2rem 0;">Reddit: We have faced difficulties on Reddit because we are not active members of this community and our posts were seen as spam. </li>
+									<div class="row">
+										<div class="col-3">
+											<img style="width: 100%;" src="./images/dovezi.jpeg"/>
+										</div>
+										<div class="col-3">
+											<img style="width: 100%;" src="./images/dovezi4.jpeg"/>
+										</div>
+										<div class="col-3">
+											<img style="width: 100%;" src="./images/dovezi2.jpeg"/>
+										</div>
+										<div class="col-3">
+											<img style="width: 100%;" src="./images/dovezi3.jpeg"/>
+										</div>
+									</div>
+									<li style="margin: 2rem 0;">Facebook: We posted on facebook groups. This was also problematic at first, because we needed to be accepted by the group admin. </li> </li>
+									<div class="row">
+										<div class="col-6">
+											<img style="width: 100%;" src="./images/dovezi6.jpeg"/>
+										</div>
+										<div class="col-3"></div>
+										<div class="col-3"></div>
+									</div>
+								</ul></div>
+							</article>	
 							<article>
 								<h2>Market research</h2>
 								<h3>Size of Target Market:</h3>
@@ -674,11 +732,12 @@
 									<div class="col-12">
 										<img src="./images/mvp_mail.png" style="width:100%" alt="Email sent for people subscribed through the landing page.">
 									</div>
-									<div class="col-4"></div>	
-									<div class="col-4">
-										<img src="./images/mvp.jpeg" style="width:100%" alt="Homepage of the MVP.">
+									<div class="col-12">
+										<img src="./images/mvp.png" style="width:100%" alt="Homepage of the MVP.">
 									</div>
-									<div class="col-4"></div>	
+									<div class="col-12">
+										<img src="./images/hotjar-mvp.png" style="width:100%" alt="Analytics">
+									</div>
 								</div>
 							</article>
 						</div>
@@ -703,5 +762,57 @@
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
 
+	
+		<script>
+		window.addEventListener('DOMContentLoaded', (event) => {
+		const headings = document.querySelectorAll("h2:not(#toc > h2), h3");
+		const toc = document.getElementById("toc");
+		const totalHeadings = headings.length;
+		
+		let tocOl = document.createElement("ol");
+		let tocFragment = new DocumentFragment();
+		let mainLi = null;
+		let subUl = null;
+		let subLi = null;
+		let isSibling = false;
+
+		if(totalHeadings > 1) {
+		for (let element of headings) {
+			let anchor = document.createElement("a");
+			let anchorText = element.innerText;
+			anchor.innerText = anchorText;
+			let elementId = anchorText.replaceAll(" ", "-").toLowerCase();
+			anchor.href = "#" + elementId;
+			element.id = elementId;
+			let level = element.nodeName;
+
+			if ("H3" === level) {
+				if (mainLi) {
+					subLi = document.createElement("li");
+					subLi.appendChild(anchor);
+
+					if (isSibling === false) {
+						subUl = document.createElement("ul");
+					}
+					subUl.appendChild(subLi);
+					mainLi.appendChild(subUl);
+
+					isSibling = true;
+				}
+			} else {
+				mainLi = document.createElement("li");
+				mainLi.appendChild(anchor);
+				tocFragment.appendChild(mainLi);
+				isSibling = false;
+				subUl = null;
+			}
+		}
+		tocOl.append(tocFragment);
+		toc.append(tocOl);
+		} else {
+			toc.style.display = "none";
+		}
+		});
+		</script>	
 	</body>
 </html>
